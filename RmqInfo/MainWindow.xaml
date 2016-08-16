@@ -1,0 +1,32 @@
+﻿<Window x:Class="RmqInfo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RMQ Info" Height="350" Width="525" MinWidth="525" MinHeight="350" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ScrollViewer.CanContentScroll="True">
+    <Grid>
+        <DockPanel>
+            <StackPanel Orientation="Vertical" Width="120">
+                <Button x:Name="BtnOverview" Content="Overview" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Height="22" Width="100" Click="BtnOverview_Click"/>
+                <Button x:Name="BtnClusterName" Content="Cluster Name" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Height="22" Width="100" Click="BtnClusterName_Click"/>
+                <Button x:Name="BtnNodes" Content="Nodes" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Height="22" Width="100" Click="BtnNodes_Click"/>
+            </StackPanel>
+            <DockPanel LastChildFill="True">
+                <TextBox x:Name="TbConnections"
+                             DockPanel.Dock="Top"
+                             Text="{Binding Text, Mode=OneWay}"
+                             IsReadOnly="True"
+                             TextWrapping="Wrap"
+                             VerticalScrollBarVisibility="Auto"
+                             MinHeight="50"
+                             MinWidth="400" />
+                <TextBox x:Name="TbResult"
+                             DockPanel.Dock="Bottom"
+                             Text="{Binding Text, Mode=OneWay}"
+                             IsReadOnly="True"
+                             TextWrapping="Wrap"
+                             VerticalScrollBarVisibility="Auto"
+                             MinHeight="250"
+                             MinWidth="400" />
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</Window>
