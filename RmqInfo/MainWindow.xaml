@@ -8,6 +8,7 @@
                 <Button x:Name="BtnOverview" Content="Overview" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Height="22" Width="100" Click="BtnOverview_Click"/>
                 <Button x:Name="BtnClusterName" Content="Cluster Name" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Height="22" Width="100" Click="BtnClusterName_Click"/>
                 <Button x:Name="BtnNodes" Content="Nodes" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Height="22" Width="100" Click="BtnNodes_Click"/>
+                <Button x:Name="BtnExchanges" Content="Exchanges" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Height="22" Width="100" Click="BtnExchanges_Click"/>
             </StackPanel>
             <DockPanel LastChildFill="True">
                 <TextBox x:Name="TbConnections"

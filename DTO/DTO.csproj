@@ -48,6 +48,7 @@
     <Compile Include="Rmq\CapabilitiesDto.cs" />
     <Compile Include="Rmq\ClientPropertiesDto.cs" />
     <Compile Include="Rmq\ConnectionDto.cs" />
+    <Compile Include="Rmq\ExchangeDto.cs" />
     <Compile Include="Rmq\GarbageCollectionDto.cs" />
   </ItemGroup>
   <ItemGroup>

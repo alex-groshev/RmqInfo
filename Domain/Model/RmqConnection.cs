@@ -15,18 +15,18 @@ namespace Domain.Model
         public RmqConnection(string user, string host, int port, string peerHost, int peerPort, RmqConnectionStatus rmqConnectionStatus)
         {
             if (string.IsNullOrEmpty(user))
-                throw new ArgumentException("user");
+                throw new ArgumentException(nameof(user));
 
             User = user;
 
             if (string.IsNullOrEmpty(host))
-                throw new ArgumentException("host");
+                throw new ArgumentException(nameof(host));
 
             _host = host;
             _port = port;
 
             if (string.IsNullOrEmpty(peerHost))
-                throw new ArgumentException("peerHost");
+                throw new ArgumentException(nameof(peerHost));
 
             _peerHost = peerHost;
             _peerPort = peerPort;

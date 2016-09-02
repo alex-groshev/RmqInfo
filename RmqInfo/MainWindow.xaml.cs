@@ -77,6 +77,31 @@ namespace RmqInfo
             BtnNodes.IsEnabled = true;
         }
 
+        private async void BtnExchanges_Click(object sender, RoutedEventArgs e)
+        {
+            BtnExchanges.IsEnabled = false;
+            var caption = BtnExchanges.Content;
+            BtnExchanges.Content = Loading;
+
+            try
+            {
+                var exchanges = await (new RmqExchangeRepository()).GetExchangesAsync();
+
+                var result = exchanges.Aggregate(string.Empty, (current, c) => current + c.ToString() + "\n");
+                if (string.IsNullOrEmpty(result))
+                    result = "No exchanges";
+
+                TbResult.Text = result;
+            }
+            catch (Exception ex)
+            {
+                TbResult.Text = ex.Message;
+            }
+
+            BtnExchanges.Content = caption;
+            BtnExchanges.IsEnabled = true;
+        }
+
         private async void TimerCallbackAsync(object state)
         {
             try

@@ -43,10 +43,12 @@
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="Model\IRmqClusterNameRepository.cs" />
     <Compile Include="Model\IRmqConnectionRepository.cs" />
+    <Compile Include="Model\IRmqExchangeRepository.cs" />
     <Compile Include="Model\IRmqNodesRepository.cs" />
     <Compile Include="Model\IRmqOverviewRepository.cs" />
     <Compile Include="Model\RmqConnection.cs" />
     <Compile Include="Model\RmqConnectionStatus.cs" />
+    <Compile Include="Model\RmqExchange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
