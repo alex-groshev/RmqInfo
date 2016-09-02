@@ -84,8 +84,7 @@ namespace RmqInfo
                 var connections = await (new RmqConnectionRepository()).GetConnectionsAsync().ConfigureAwait(false);
 
                 var result = connections.Aggregate(string.Empty,
-                    (current, c) => current + string.Format("State={0}, Connected At={1}, User={2}, Connection={3}\n",
-                        c.State, c.ConnectedAt, c.User, c.ToString()));
+                    (current, c) => current + $"State={c.State}, Connected At={c.ConnectedAt}, User={c.User}, Connection={c.ToString()}\n");
                 if (string.IsNullOrEmpty(result))
                     result = "No connections";
 

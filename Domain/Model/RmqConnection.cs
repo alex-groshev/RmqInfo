@@ -4,35 +4,20 @@ namespace Domain.Model
 {
     public class RmqConnection
     {
-        public string Name
-        {
-            get
-            {
-                return _name ?? (_name = string.Format("[{0}]:{1} -> [{2}]:{3}", _peerHost, _peerPort, _host, _port));
-            }
-        }
+        public string Name => _name ?? (_name = $"[{_peerHost}]:{_peerPort} -> [{_host}]:{_port}");
 
-        public string User
-        {
-            get { return _user; }
-        }
+        public string User { get; }
 
-        public string ConnectedAt
-        {
-            get { return _rmqConnectionStatus.ConnectedAt.ToString(); }
-        }
+        public string ConnectedAt => _rmqConnectionStatus.ConnectedAt.ToString();
 
-        public string State
-        {
-            get { return _rmqConnectionStatus.State; }
-        }
+        public string State => _rmqConnectionStatus.State;
 
         public RmqConnection(string user, string host, int port, string peerHost, int peerPort, RmqConnectionStatus rmqConnectionStatus)
         {
             if (string.IsNullOrEmpty(user))
                 throw new ArgumentException("user");
 
-            _user = user;
+            User = user;
 
             if (string.IsNullOrEmpty(host))
                 throw new ArgumentException("host");
@@ -53,7 +38,6 @@ namespace Domain.Model
             return Name;
         }
 
-        private readonly string _user;
         private readonly string _host;
         private readonly int _port;
         private readonly string _peerHost;

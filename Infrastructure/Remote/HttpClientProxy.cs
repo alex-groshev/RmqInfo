@@ -14,7 +14,7 @@ namespace Infrastructure.Remote
         public HttpClientProxy(string baseAddress)
         {
             if (string.IsNullOrEmpty(baseAddress))
-                throw new ArgumentException("baseAddress");
+                throw new ArgumentException(nameof(baseAddress));
 
             _baseAddress = baseAddress;
         }
@@ -22,10 +22,10 @@ namespace Infrastructure.Remote
         public HttpClientProxy(string baseAddress, string credentials)
         {
             if (string.IsNullOrEmpty(baseAddress))
-                throw new ArgumentException("baseAddress");
+                throw new ArgumentException(nameof(baseAddress));
 
             if (string.IsNullOrEmpty(credentials))
-                throw new ArgumentException("credentials");
+                throw new ArgumentException(nameof(credentials));
 
             _baseAddress = baseAddress;
             _credentials = credentials;
@@ -34,16 +34,16 @@ namespace Infrastructure.Remote
         public HttpClientProxy(string baseAddress, string username, string password)
         {
             if (string.IsNullOrEmpty(baseAddress))
-                throw new ArgumentException("baseAddress");
+                throw new ArgumentException(nameof(baseAddress));
 
             if (string.IsNullOrEmpty(username))
-                throw new ArgumentException("username");
+                throw new ArgumentException(nameof(username));
 
             if (string.IsNullOrEmpty(password))
-                throw new ArgumentException("password");
+                throw new ArgumentException(nameof(password));
 
             _baseAddress = baseAddress;
-            _credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("{0}:{1}", username, password)));
+            _credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{username}:{password}"));
         }
 
         public async Task<HttpResponseMessage> GetAsync(string url)
