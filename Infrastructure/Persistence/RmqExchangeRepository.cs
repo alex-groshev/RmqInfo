@@ -19,7 +19,15 @@ namespace Infrastructure.Persistence
             var service = new RmqExchangeServiceProxy(new HttpClientProxy(BaseAddress, Login, Password));
             var exchangeDtos = await service.GetExchangesAsync().ConfigureAwait(false);
             return exchangeDtos
-                .Select(x => new RmqExchange(x.Name, x.Vhost, x.Type, x.Durable, x.AutoDelete, x.Internal))
+                .Select(x => RmqExchange
+                    .GetBuilder()
+                    .WithName(x.Name)
+                    .WithVhost(x.Vhost)
+                    .WithType(x.Type)
+                    .WithDurable(x.Durable)
+                    .WithAutoDelete(x.AutoDelete)
+                    .WithInternal(x.Internal)
+                    .Build())
                 .ToList();
         }
     }

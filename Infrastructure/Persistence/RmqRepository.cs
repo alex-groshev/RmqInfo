@@ -7,11 +7,7 @@
         protected string Password { get; private set; }
 
         protected RmqRepository()
-        {
-             BaseAddress = "http://localhost:15672/api/";
-             Login = "guest";
-             Password = "guest";
-        }
+            : this("http://localhost:15672/api/", "guest", "guest") { }
 
         protected RmqRepository(string baseAddress, string login, string password)
         {
