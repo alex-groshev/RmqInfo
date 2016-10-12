@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DateTimeExtensions.cs" />
+    <Compile Include="Model\CustomFormatProvider.cs" />
     <Compile Include="Model\IRmqClusterNameRepository.cs" />
     <Compile Include="Model\IRmqConnectionRepository.cs" />
     <Compile Include="Model\IRmqExchangeRepository.cs" />
