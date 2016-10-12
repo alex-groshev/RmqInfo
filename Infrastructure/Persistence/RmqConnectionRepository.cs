@@ -18,8 +18,8 @@ namespace Infrastructure.Persistence
         public async Task<List<RmqConnection>> GetConnectionsAsync()
         {
             var service = new RmqConnectionsServiceProxy(new HttpClientProxy(BaseAddress, Login, Password));
-            var connectionDtos = await service.GetConnectionsAsync().ConfigureAwait(false);
-            return connectionDtos.Select(c =>
+            var dtos = await service.GetConnectionsAsync().ConfigureAwait(false);
+            return dtos.Select(c =>
                 new RmqConnection(c.User, c.Host, c.Port, c.PeerHost, c.PeerPort,
                         new RmqConnectionStatus(c.ConnectedAt.UnixTimeStampToDateTime(), c.State))).ToList();
         }

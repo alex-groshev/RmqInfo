@@ -102,6 +102,32 @@ namespace RmqInfo
             BtnExchanges.IsEnabled = true;
         }
 
+        private async void BtnQueues_Click(object sender, RoutedEventArgs e)
+        {
+            BtnQueues.IsEnabled = false;
+            var caption = BtnQueues.Content;
+            BtnQueues.Content = Loading;
+
+            try
+            {
+                var queues = await (new RmqQueueRepository()).GetQueuesAsync();
+
+                var result = queues.Aggregate(string.Empty, (current, c) => current + c.ToString() + "\n");
+
+                if (string.IsNullOrEmpty(result))
+                    result = "No queues";
+
+                TbResult.Text = result;
+            }
+            catch (Exception ex)
+            {
+                TbResult.Text = ex.Message;
+            }
+
+            BtnQueues.Content = caption;
+            BtnQueues.IsEnabled = true;
+        }
+
         private async void TimerCallbackAsync(object state)
         {
             try

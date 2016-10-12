@@ -50,6 +50,7 @@
     <Compile Include="Rmq\ConnectionDto.cs" />
     <Compile Include="Rmq\ExchangeDto.cs" />
     <Compile Include="Rmq\GarbageCollectionDto.cs" />
+    <Compile Include="Rmq\QueueDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

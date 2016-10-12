@@ -50,6 +50,7 @@
     <Compile Include="Persistence\RmqExchangeRepository.cs" />
     <Compile Include="Persistence\RmqNodesRepository.cs" />
     <Compile Include="Persistence\RmqOverviewRepository.cs" />
+    <Compile Include="Persistence\RmqQueueRepository.cs" />
     <Compile Include="Persistence\RmqRepository.cs" />
     <Compile Include="Remote\HttpClientProxy.cs" />
     <Compile Include="Remote\IHttpClientProxy.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Remote\RabbitMQ\RmqExchangeServiceProxy.cs" />
     <Compile Include="Remote\RabbitMQ\RmqNodesServiceProxy.cs" />
     <Compile Include="Remote\RabbitMQ\RmqOverviewServiceProxy.cs" />
+    <Compile Include="Remote\RabbitMQ\RmqQueueServiceProxy.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">

@@ -7,7 +7,8 @@ using Infrastructure.Remote.RabbitMQ;
 
 namespace Infrastructure.Persistence
 {
-    public class RmqExchangeRepository : RmqRepository, IRmqExchangeRepository
+    public class RmqExchangeRepository
+        : RmqRepository, IRmqExchangeRepository
     {
         public RmqExchangeRepository() { }
 
@@ -17,8 +18,8 @@ namespace Infrastructure.Persistence
         public async Task<List<RmqExchange>> GetExchangesAsync()
         {
             var service = new RmqExchangeServiceProxy(new HttpClientProxy(BaseAddress, Login, Password));
-            var exchangeDtos = await service.GetExchangesAsync().ConfigureAwait(false);
-            return exchangeDtos
+            var dtos = await service.GetExchangesAsync().ConfigureAwait(false);
+            return dtos
                 .Select(x => RmqExchange
                     .GetBuilder()
                     .WithName(x.Name)

@@ -46,9 +46,11 @@
     <Compile Include="Model\IRmqExchangeRepository.cs" />
     <Compile Include="Model\IRmqNodesRepository.cs" />
     <Compile Include="Model\IRmqOverviewRepository.cs" />
+    <Compile Include="Model\IRmqQueueRepository.cs" />
     <Compile Include="Model\RmqConnection.cs" />
     <Compile Include="Model\RmqConnectionStatus.cs" />
     <Compile Include="Model\RmqExchange.cs" />
+    <Compile Include="Model\RmqQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
