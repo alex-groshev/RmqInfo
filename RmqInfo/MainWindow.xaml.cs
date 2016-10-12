@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using Infrastructure.Persistence;
 
 namespace RmqInfo
@@ -20,112 +22,64 @@ namespace RmqInfo
             _timer = new Timer(TimerCallbackAsync, null, 0, Timeout.Infinite);
         }
 
-        private async void BtnOverview_Click(object sender, RoutedEventArgs e)
+        private async void BtnClickHandler(ContentControl button, Func<Task<string>> func)
         {
-            BtnOverview.IsEnabled = false;
-            var caption = BtnOverview.Content;
-            BtnOverview.Content = Loading;
+            button.IsEnabled = false;
+            var caption = button.Content;
+            button.Content = Loading;
 
             try
             {
-                TbResult.Text = await (new RmqOverviewRepository()).GetOverviewAsync();
+                TbResult.Text = await func.Invoke();
             }
             catch (Exception ex)
             {
                 TbResult.Text = ex.Message;
             }
 
-            BtnOverview.Content = caption;
-            BtnOverview.IsEnabled = true;
+            button.Content = caption;
+            button.IsEnabled = true;
         }
 
-        private async void BtnClusterName_Click(object sender, RoutedEventArgs e)
+        private void BtnOverview_Click(object sender, RoutedEventArgs e)
         {
-            BtnClusterName.IsEnabled = false;
-            var caption = BtnClusterName.Content;
-            BtnClusterName.Content = Loading;
-
-            try
-            {
-                TbResult.Text = await (new RmqClusterNameRepository()).GetClusterNameAsync();
-            }
-            catch (Exception ex)
-            {
-                TbResult.Text = ex.Message;
-            }
-
-            BtnClusterName.Content = caption;
-            BtnClusterName.IsEnabled = true;
+            BtnClickHandler(BtnOverview, async () => await (new RmqOverviewRepository()).GetOverviewAsync());
         }
 
-        private async void BtnNodes_Click(object sender, RoutedEventArgs e)
+        private void BtnClusterName_Click(object sender, RoutedEventArgs e)
         {
-            BtnNodes.IsEnabled = false;
-            var caption = BtnNodes.Content;
-            BtnNodes.Content = Loading;
-
-            try
-            {
-                TbResult.Text = await (new RmqNodesRepository()).GetNodesAsync();
-            }
-            catch (Exception ex)
-            {
-                TbResult.Text = ex.Message;
-            }
-
-            BtnNodes.Content = caption;
-            BtnNodes.IsEnabled = true;
+            BtnClickHandler(BtnClusterName, async () => await (new RmqClusterNameRepository()).GetClusterNameAsync());
         }
 
-        private async void BtnExchanges_Click(object sender, RoutedEventArgs e)
+        private void BtnNodes_Click(object sender, RoutedEventArgs e)
         {
-            BtnExchanges.IsEnabled = false;
-            var caption = BtnExchanges.Content;
-            BtnExchanges.Content = Loading;
+            BtnClickHandler(BtnNodes, async () => await (new RmqNodesRepository()).GetNodesAsync());
+        }
 
-            try
+        private void BtnExchanges_Click(object sender, RoutedEventArgs e)
+        {
+            Func<Task<string>> func = async () =>
             {
                 var exchanges = await (new RmqExchangeRepository()).GetExchangesAsync();
-
                 var result = exchanges.Aggregate(string.Empty, (current, c) => current + c.ToString() + "\n");
                 if (string.IsNullOrEmpty(result))
                     result = "No exchanges";
-
-                TbResult.Text = result;
-            }
-            catch (Exception ex)
-            {
-                TbResult.Text = ex.Message;
-            }
-
-            BtnExchanges.Content = caption;
-            BtnExchanges.IsEnabled = true;
+                return result;
+            };
+            BtnClickHandler(BtnExchanges, func);
         }
 
-        private async void BtnQueues_Click(object sender, RoutedEventArgs e)
+        private void BtnQueues_Click(object sender, RoutedEventArgs e)
         {
-            BtnQueues.IsEnabled = false;
-            var caption = BtnQueues.Content;
-            BtnQueues.Content = Loading;
-
-            try
+            Func<Task<string>> func = async () =>
             {
                 var queues = await (new RmqQueueRepository()).GetQueuesAsync();
-
                 var result = queues.Aggregate(string.Empty, (current, c) => current + c.ToString() + "\n");
-
                 if (string.IsNullOrEmpty(result))
                     result = "No queues";
-
-                TbResult.Text = result;
-            }
-            catch (Exception ex)
-            {
-                TbResult.Text = ex.Message;
-            }
-
-            BtnQueues.Content = caption;
-            BtnQueues.IsEnabled = true;
+                return result;
+            };
+            BtnClickHandler(BtnQueues, func);
         }
 
         private async void TimerCallbackAsync(object state)
