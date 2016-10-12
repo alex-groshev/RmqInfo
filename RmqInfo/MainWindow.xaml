@@ -20,6 +20,9 @@
                              VerticalScrollBarVisibility="Auto"
                              MinHeight="50"
                              MinWidth="400" />
+                <StackPanel Orientation="Horizontal" Height="35" HorizontalAlignment="Stretch" DockPanel.Dock="Top">
+                    <Button x:Name="BtnCopy" Content="Copy" Click="BtnCopy_Click" Margin="3,3,3,3" />
+                </StackPanel>
                 <TextBox x:Name="TbResult"
                              DockPanel.Dock="Bottom"
                              Text="{Binding Text, Mode=OneWay}"

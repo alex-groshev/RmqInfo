@@ -104,5 +104,10 @@ namespace RmqInfo
                 _timer.Change(1000, Timeout.Infinite);
             }
         }
+
+        private void BtnCopy_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(TbResult.Text);
+        }
     }
 }
