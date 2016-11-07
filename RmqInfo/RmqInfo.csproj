@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CsvFormatViewType.cs" />
+    <Compile Include="FormatViewType.cs" />
+    <Compile Include="TsvFormatViewType.cs" />
+    <Compile Include="TxtFormatViewType.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
