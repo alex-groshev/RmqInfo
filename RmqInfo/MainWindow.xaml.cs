@@ -21,6 +21,7 @@ namespace RmqInfo
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new ResultViewModel();
             _timer = new Timer(TimerCallbackAsync, null, 0, Timeout.Infinite);
         }
 

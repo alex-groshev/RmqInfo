@@ -8,8 +8,8 @@
                 <Button x:Name="BtnOverview" Content="Overview" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Height="22" Width="100" Click="BtnOverview_Click"/>
                 <Button x:Name="BtnClusterName" Content="Cluster Name" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Height="22" Width="100" Click="BtnClusterName_Click"/>
                 <Button x:Name="BtnNodes" Content="Nodes" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Height="22" Width="100" Click="BtnNodes_Click"/>
-                <Button x:Name="BtnExchanges" Content="Exchanges" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Height="22" Width="100" Click="BtnExchanges_Click"/>
-                <Button x:Name="BtnQueues" Content="Queues" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Height="22" Width="100" Click="BtnQueues_Click"/>
+                <Button x:Name="BtnExchanges" Content="Exchanges" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Height="22" Width="100" Command="{Binding GetExchangesCommand}" />
+                <Button x:Name="BtnQueues" Content="Queues" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Height="22" Width="100" Command="{Binding GetQueuesCommand}" />
             </StackPanel>
             <DockPanel LastChildFill="True">
                 <TextBox x:Name="TbConnections"
@@ -22,13 +22,13 @@
                              MinWidth="400" />
                 <StackPanel Orientation="Horizontal" Height="35" HorizontalAlignment="Stretch" DockPanel.Dock="Top">
                     <Button x:Name="BtnCopy" Content="Copy" Click="BtnCopy_Click" Margin="3,3,3,3" />
-                    <RadioButton GroupName="OutputFormat" Content="TXT" Style="{StaticResource {x:Type ToggleButton}}" Margin="3,3,3,3" IsChecked="True" Checked="RadioButton_Checked" />
-                    <RadioButton GroupName="OutputFormat" Content="CSV" Style="{StaticResource {x:Type ToggleButton}}" Margin="3,3,3,3" Checked="RadioButton_Checked" />
-                    <RadioButton GroupName="OutputFormat" Content="TSV" Style="{StaticResource {x:Type ToggleButton}}" Margin="3,3,3,3" Checked="RadioButton_Checked" />
+                    <RadioButton GroupName="OutputFormat" Content="TXT" Style="{StaticResource {x:Type ToggleButton}}" Margin="3,3,3,3" IsChecked="True" Checked="RadioButton_Checked" Command="{Binding TxtViewCommand}" />
+                    <RadioButton GroupName="OutputFormat" Content="CSV" Style="{StaticResource {x:Type ToggleButton}}" Margin="3,3,3,3" Checked="RadioButton_Checked" Command="{Binding CsvViewCommand}" />
+                    <RadioButton GroupName="OutputFormat" Content="TSV" Style="{StaticResource {x:Type ToggleButton}}" Margin="3,3,3,3" Checked="RadioButton_Checked" Command="{Binding TsvViewCommand}" />
                 </StackPanel>
                 <TextBox x:Name="TbResult"
                              DockPanel.Dock="Bottom"
-                             Text="{Binding Text, Mode=OneWay}"
+                             Text="{Binding Result, Mode=OneWay}"
                              IsReadOnly="True"
                              TextWrapping="Wrap"
                              VerticalScrollBarVisibility="Auto"
