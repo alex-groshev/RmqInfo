@@ -58,35 +58,7 @@ namespace RmqInfo
         {
             BtnClickHandler(BtnNodes, async () => await (new RmqNodesRepository()).GetNodesAsync());
         }
-
-        private void BtnExchanges_Click(object sender, RoutedEventArgs e)
-        {
-            Func<Task<string>> func = async () =>
-            {
-                var exchanges = await (new RmqExchangeRepository()).GetExchangesAsync();
-                var result = exchanges.Aggregate(string.Empty,
-                    (current, c) => current + string.Format(new CustomFormatProvider(), "{0:" + _resultFormat + "}\n", c));
-                if (string.IsNullOrEmpty(result))
-                    result = "No exchanges";
-                return result;
-            };
-            BtnClickHandler(BtnExchanges, func);
-        }
-
-        private void BtnQueues_Click(object sender, RoutedEventArgs e)
-        {
-            Func<Task<string>> func = async () =>
-            {
-                var queues = await (new RmqQueueRepository()).GetQueuesAsync();
-                var result = queues.Aggregate(string.Empty,
-                    (current, c) => current + string.Format(new CustomFormatProvider(), "{0:" + _resultFormat + "}\n", c));
-                if (string.IsNullOrEmpty(result))
-                    result = "No queues";
-                return result;
-            };
-            BtnClickHandler(BtnQueues, func);
-        }
-
+        
         private async void TimerCallbackAsync(object state)
         {
             try
