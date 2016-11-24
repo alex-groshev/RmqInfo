@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using Domain.Model;
 using Infrastructure.Persistence;
 
 namespace RmqInfo
@@ -16,7 +15,6 @@ namespace RmqInfo
     {
         private const string Loading = "Loading...";
         private readonly Timer _timer;
-        private string _resultFormat = "TXT";
 
         public MainWindow()
         {
@@ -85,12 +83,6 @@ namespace RmqInfo
         private void BtnCopy_Click(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText(TbResult.Text);
-        }
-
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            var radioButton = sender as RadioButton;
-            _resultFormat = radioButton != null ? (string) radioButton.Content : "TXT";
         }
     }
 }

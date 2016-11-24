@@ -22,9 +22,9 @@
                              MinWidth="400" />
                 <StackPanel Orientation="Horizontal" Height="35" HorizontalAlignment="Stretch" DockPanel.Dock="Top">
                     <Button x:Name="BtnCopy" Content="Copy" Click="BtnCopy_Click" Margin="3,3,3,3" />
-                    <RadioButton GroupName="OutputFormat" Content="TXT" Style="{StaticResource {x:Type ToggleButton}}" Margin="3,3,3,3" IsChecked="True" Checked="RadioButton_Checked" Command="{Binding TxtViewCommand}" />
-                    <RadioButton GroupName="OutputFormat" Content="CSV" Style="{StaticResource {x:Type ToggleButton}}" Margin="3,3,3,3" Checked="RadioButton_Checked" Command="{Binding CsvViewCommand}" />
-                    <RadioButton GroupName="OutputFormat" Content="TSV" Style="{StaticResource {x:Type ToggleButton}}" Margin="3,3,3,3" Checked="RadioButton_Checked" Command="{Binding TsvViewCommand}" />
+                    <RadioButton GroupName="OutputFormat" Content="TXT" Style="{StaticResource {x:Type ToggleButton}}" Margin="3,3,3,3" IsChecked="True" Command="{Binding TxtViewCommand}" />
+                    <RadioButton GroupName="OutputFormat" Content="CSV" Style="{StaticResource {x:Type ToggleButton}}" Margin="3,3,3,3" Command="{Binding CsvViewCommand}" />
+                    <RadioButton GroupName="OutputFormat" Content="TSV" Style="{StaticResource {x:Type ToggleButton}}" Margin="3,3,3,3" Command="{Binding TsvViewCommand}" />
                 </StackPanel>
                 <TextBox x:Name="TbResult"
                              DockPanel.Dock="Bottom"
